@@ -1,0 +1,24 @@
+name: prontogui
+description: A Dart library for 1) implementing the server-side communication and ProntoGUI model and for 2) connecting Dart programs to the ProntoGUI App.
+version: 2.0.0-dev
+publish_to: none    # Added this temporarily to deal with issue in dependency for statemachine, from a local path.
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.4.3
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+  cbor: ^6.1.1
+  protobuf: ^6.0.0
+  grpc: '>=3.2.4 <6.0.0'
+  logger: ^2.4.0
+  statemachine: ^3.3.1
+  meta: ^1.17.0
+  path: ^1.9.1
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.24.0

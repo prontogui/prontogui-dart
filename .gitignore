@@ -1,0 +1,9 @@
+# https://dart.dev/guides/libraries/private-files
+# Created by `dart pub`
+.dart_tool/
+.vscode/
+.flutter-plugins-dependencies
+# The proto repo the makefile clones (top level only - lib/src/proto holds
+# the generated Dart code, which IS committed)
+/proto/
+build/

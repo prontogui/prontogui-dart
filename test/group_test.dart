@@ -1,0 +1,49 @@
+// Copyright 2024-2026 ProntoGUI, LLC
+// ProntoGUI™ is a trademark of ProntoGUI, LLC
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+import 'package:test/test.dart';
+import 'package:prontogui/src/group.dart';
+import 'package:prontogui/src/text.dart';
+import 'package:prontogui/src/pkey.dart';
+
+void main() {
+  group('Group', () {
+    test('should initialize with default values', () {
+      var group = Group();
+      expect(group.items, isEmpty);
+      expect(group.describeType, 'Group');
+    });
+
+    test('should initialize with provided group items', () {
+      var primitive1 = Text();
+      var primitive2 = Text();
+      var group = Group(items: [primitive1, primitive2]);
+      expect(group.items, [primitive1, primitive2]);
+    });
+
+    test('should set and get group items', () {
+      var primitive1 = Text();
+      var primitive2 = Text();
+      var group = Group();
+      group.items = [primitive1, primitive2];
+      expect(group.items, [primitive1, primitive2]);
+    });
+
+    test('should locate next descendant correctly', () {
+      var primitive1 = Text();
+      var primitive2 = Text();
+      var group = Group(items: [primitive1, primitive2]);
+      var locator = PKeyLocator(PKey(0, 1));
+      var descendant = group.locateNextDescendant(locator);
+      expect(descendant, primitive2);
+    });
+
+    test('should throw exception if locator is out of bounds', () {
+      var group = Group();
+      var locator = PKeyLocator(PKey(0));
+      locator.nextIndex();
+      expect(() => group.locateNextDescendant(locator), throwsException);
+    });
+  });
+}
